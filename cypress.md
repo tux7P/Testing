@@ -46,3 +46,20 @@ describe('Iframe Test', () => {
   });
 });
 ```
+
+#### Cypress-lighthouse
+
+Even the best application’s UX can be spoiled by poor performance. To avoid this, it is worth keeping eye on it, and since your tests are running anyway, it’s a perfect opportunity to check performance. Two birds with one stone. In addition, you can also check PWA, SEO, and whether good practices on the frontend. The icing on the cake is the ability to verify accessibility. 
+
+```
+import 'cypress-lighthouse';
+
+describe('Lighthouse Test', () => {
+  it('Test #1', () => {
+    cy.visit('https://www.w3schools.com');
+    cy.lighthouse('https://www.w3schools.com').then((result) => {
+      cy.log(JSON.stringify(result));
+    });
+  });
+});
+```
