@@ -12,7 +12,7 @@
 
 #### FakerJS
 
-FakerJS comes to your aid by dynamically generating as much data as you want to test. 
+When writing tests, you generate a large amount of unique data (e.g. usernames). Setting up new data every single time before starting testing won’t do anymore, we’re IT, and we’re not wasting time like that. Fortunately, FakerJS comes to your aid by dynamically generating as much data as you want to test. 
 
 ```
 const { faker } = require('@faker-js/faker');
@@ -25,6 +25,24 @@ describe('Faker test', () => {
       cy.get('#frmEmail').type(faker.name.lastName());
       cy.get('#frmComments').type(faker.lorem.sentence(10));
     });
+  });
+});
+```
+
+#### Cypress-iframe
+
+Working with iframes is extremely hard and tedious but the Cypress-iframe library will help by making tests more stable and pleasant to implement.
+
+```
+///<reference types="cypress-iframe" />
+import 'cypress-iframe';
+
+describe('Iframe Test', () => {
+  it(`Test iframe`, () => {
+    cy.visit('https://www.w3schools.com/html/html_iframe.asp');
+    cy.frameLoaded('iframe[title="W3Schools HTML Tutorial"]');
+    cy.iframe('iframe[title="W3Schools HTML Tutorial"]').should('be.visible');
+    cy.iframe('iframe[title="W3Schools HTML Tutorial"]').find('#submitBtn').should('be.visible').click();
   });
 });
 ```
