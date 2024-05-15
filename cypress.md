@@ -1,3 +1,5 @@
+### Things to consider
+It should avoid meaningless magic numbers, should avoid violating principles like DRY, YAGNI, SRP and KISS.
 ### Folder structure for projects with UI & API tests
 ### Naming conventions for folders, files, classes, methods and variables
 ### 3rd party libraries
